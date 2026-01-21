@@ -29,14 +29,15 @@ const socials = [
 ];
 
 export default function FloatingSocial() {
-  const downloadResume = () => {
-    const link = document.createElement("a");
-    link.href = "resume.pdf";
-    link.download = "Honey_Habib.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+const downloadResume = () => {
+  const link = document.createElement("a");
+  link.href = `${import.meta.env.BASE_URL}resume.pdf`;
+  link.download = "Honey_Habib.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 
   return (
     <div className="hidden text-white lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-4">
