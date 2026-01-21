@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Optional global resets */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, sans-serif;
+}
