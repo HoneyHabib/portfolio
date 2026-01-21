@@ -29,14 +29,14 @@ const socials = [
 ];
 
 export default function FloatingSocial() {
-const downloadResume = () => {
-  const link = document.createElement("a");
-  link.href = `${import.meta.env.BASE_URL}resume.pdf`;
-  link.download = "Honey_Habib.pdf";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+// const downloadResume = () => {
+//   const link = document.createElement("a");
+//   link.href = `${import.meta.env.BASE_URL}resume.pdf`;
+//   link.download = "Honey_Habib.pdf";
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+// };
 
 
   return (
@@ -49,23 +49,23 @@ const downloadResume = () => {
           className="relative group"
         >
           {item.download ? (
-            <button
-              onClick={downloadResume}
-              className="
-                p-4 rounded-xl
-                bg-neutral-700
-                border border-white/10
-                text-xl
-                text-white
-                flex items-center justify-center
-                appearance-none
-                outline-none
-                transition-colors
-                group-hover:text-red-400
-              "
-            >
-              <FaFilePdf />
-            </button>
+            <a
+            href={`${import.meta.env.BASE_URL}resume.pdf`}
+            download="Honey_Habib.pdf"
+            className="
+              p-4 rounded-xl
+              bg-neutral-700
+              border border-white/10
+              text-xl
+              text-white
+              flex items-center justify-center
+              transition-colors
+              group-hover:text-red-400
+            "
+          >
+            <FaFilePdf />
+          </a>
+
           ) : (
             <a
               href={item.link}
