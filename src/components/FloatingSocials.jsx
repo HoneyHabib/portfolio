@@ -31,7 +31,7 @@ const socials = [
 export default function FloatingSocial() {
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/resume.pdf";
+    link.href = "resume.pdf";
     link.download = "Honey_Habib.pdf";
     document.body.appendChild(link);
     link.click();
