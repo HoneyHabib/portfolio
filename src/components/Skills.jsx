@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const skills = [
   {
     category: "Languages",
-    items: ["JavaScript", "TypeScript", "Python", "HTML/CSS"],
+    items: ["JavaScript", "TypeScript", "Python", "HTML/CSS","SQL"],
   },
   {
     category: "Frontend",
@@ -15,7 +15,7 @@ const skills = [
   },
   {
     category: "Tools & Platforms",
-    items: ["Git", "GitHub","GCP","AWS","SonarQube"],
+    items: ["Git", "GitHub","GCP","AWS","SonarQube","Postman","Jira"],
   },
 ];
 

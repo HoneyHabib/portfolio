@@ -1,25 +1,23 @@
 import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const socials = [
   {
     icon: <FaGithub />,
     label: "GitHub",
     link: "https://github.com/honeyhabib",
-    hover: "group-hover:text-red-400",
   },
   {
     icon: <FaLinkedin />,
     label: "LinkedIn",
     link: "https://www.linkedin.com/in/honey-habib-7721641b3/",
-    hover: "group-hover:text-red-400",
   },
   {
     icon: <SiLeetcode />,
     label: "LeetCode",
     link: "https://leetcode.com/u/HoneyHabib/",
-    hover: "group-hover:text-red-400",
   },
   {
     icon: <FaFilePdf />,
@@ -29,79 +27,123 @@ const socials = [
 ];
 
 export default function FloatingSocial() {
-// const downloadResume = () => {
-//   const link = document.createElement("a");
-//   link.href = `${import.meta.env.BASE_URL}resume.pdf`;
-//   link.download = "Honey_Habib.pdf";
-//   document.body.appendChild(link);
-//   link.click();
-//   document.body.removeChild(link);
-// };
+  /* ---------------- Mobile scroll-aware logic ---------------- */
+  const [showMobileBar, setShowMobileBar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+
+      if (currentY > lastScrollY && currentY > 80) {
+        setShowMobileBar(false); // scrolling down
+      } else {
+        setShowMobileBar(true); // scrolling up
+      }
+
+      setLastScrollY(currentY);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [lastScrollY]);
+
+  /* ---------------- Shared styles ---------------- */
+  const baseBtn =
+    "p-4 rounded-xl bg-neutral-700 border border-white/10 text-xl flex items-center justify-center";
 
   return (
-    <div className="hidden text-white lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-4">
-      {socials.map((item, i) => (
-        <motion.div
-          key={i}
-          whileHover={{ x: 6 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="relative group"
-        >
-          {item.download ? (
-            <a
-            href={`${import.meta.env.BASE_URL}resume.pdf`}
-            download="Honey_Habib.pdf"
-            className="
-              p-4 rounded-xl
-              bg-neutral-700
-              border border-white/10
-              text-xl
-              text-white
-              flex items-center justify-center
-              transition-colors
-              group-hover:text-red-400
-            "
+    <>
+      {/* ================= Desktop (Left Floating) ================= */}
+      <div className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-4">
+        {socials.map((item, i) => (
+          <motion.div
+            key={i}
+            whileHover={{ x: 6 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="relative group"
           >
-            <FaFilePdf />
-          </a>
+            {item.download ? (
+              <a
+                href={`${import.meta.env.BASE_URL}resume.pdf`}
+                download="Honey_Habib.pdf"
+                className={baseBtn}
+              >
+                <FaFilePdf className="text-white transition-colors group-hover:text-red-400" />
+              </a>
+            ) : (
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={baseBtn}
+              >
+                <span className="text-white transition-colors group-hover:text-red-400">
+                  {item.icon}
+                </span>
+              </a>
+            )}
 
-          ) : (
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Tooltip */}
+            <span
               className="
-                p-4 rounded-xl
-                bg-neutral-700
-                border border-white/10
-                text-xl
-                text-white-400
-                flex items-center justify-center
-                transition-colors
+                absolute left-14 top-1/2 -translate-y-1/2
+                px-2 py-1 rounded text-xs
+                text-white bg-black/80
+                whitespace-nowrap
+                opacity-0 group-hover:opacity-100
+                transition
               "
             >
-              <span className={item.hover}>{item.icon}</span>
-            </a>
-          )}
+              {item.label}
+            </span>
+          </motion.div>
+        ))}
+      </div>
 
-          {/* Tooltip */}
-          <span
-            className="
-              absolute left-14 top-1/2 -translate-y-1/2
-              px-2 py-1 rounded
-              text-xs text-white
-              bg-black/80
-              whitespace-nowrap
-              opacity-0
-              group-hover:opacity-100
-              transition
-            "
+      {/* ================= Mobile (Bottom Floating, Scroll Aware) ================= */}
+      <AnimatePresence>
+        {showMobileBar && (
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="lg:hidden fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-50"
           >
-            {item.label}
-          </span>
-        </motion.div>
-      ))}
-    </div>
+            <div className="flex gap-4 bg-neutral-800/90 backdrop-blur px-4 py-3 rounded-2xl border border-white/10">
+              {socials.map((item, i) => (
+                <motion.div
+                  key={i}
+                  whileTap={{ scale: 0.9 }}
+                  className="group"
+                >
+                  {item.download ? (
+                    <a
+                      href={`${import.meta.env.BASE_URL}resume.pdf`}
+                      download="Honey_Habib.pdf"
+                      className="p-3 rounded-xl bg-neutral-700 text-xl flex items-center justify-center"
+                    >
+                      <FaFilePdf className="text-white transition-colors group-active:text-red-400" />
+                    </a>
+                  ) : (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-xl bg-neutral-700 text-xl flex items-center justify-center"
+                    >
+                      <span className="text-white transition-colors group-active:text-red-400">
+                        {item.icon}
+                      </span>
+                    </a>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

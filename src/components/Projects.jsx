@@ -12,7 +12,7 @@ export default function Projects() {
       desc: "Chrome extension to auto-sync LeetCode solutions to GitHub.",
       longDesc:
         "A Chrome extension that automatically pushes accepted LeetCode solutions to GitHub with proper folder structure, commit messages, and language detection.",
-      tech: ["JavaScript", "Chrome APIs", "GitHub API"],
+      tech: ["JavaScript", "Node.js", "GitHub API","OAuth"],
       url: "https://github.com/HoneyHabib/LeetSync",
     },
     {
@@ -45,7 +45,7 @@ export default function Projects() {
       longDesc:
         "A modern, animated portfolio showcasing projects, experience, and skills with smooth transitions, glow effects, and responsive design.",
       tech: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-      url: "https://your-portfolio-url.com",
+      url: "https://github.com/HoneyHabib/portfolio",
     },
   ];
 
