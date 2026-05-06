@@ -1,0 +1,94 @@
+<!-- ================= Desktop ================= -->
+<div class="desktop-social">
+  @for (item of socials; track item) {
+    <div class="social-item">
+
+      <!-- 🔶 LeetCode (custom icon)
+      @if (item.icon === 'leetcode') {
+        <a [href]="item.link" target="_blank" class="btn">
+          <img 
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/leetcode/leetcode-original.svg"
+            alt="LeetCode"
+            class="lc-icon"
+          />
+        </a>
+      } -->
+
+      <!-- 🔶leetcode -->
+      @if (item.label==='LeetCode') {
+        <a [href]="item.link" target="_blank" class="btn">
+          <i class="fas fa-code -{{item.icon}}"></i>
+        </a>
+      }
+      <!-- 📄 Resume -->
+      @else if (item.download) {
+        <a href="assets/Honey Habib.pdf" download="Honey_Habib.pdf" class="btn">
+          <i class="fa-solid fa-file-pdf"></i>
+        </a>
+      }
+
+      <!-- 🌐 Other icons -->
+      @else {
+        <a [href]="item.link" target="_blank" class="btn">
+          <i class="fa-brands fa-{{item.icon}}"></i>
+        </a>
+      }
+
+      <!-- Tooltip -->
+      <span class="tooltip">{{ item.label }}</span>
+    </div>
+  }
+</div>
+
+
+<!-- ================= Mobile ================= -->
+@if (showMobileBar) {
+  <div class="mobile-social">
+    <div class="mobile-container">
+
+      @for (item of socials; track item) {
+        <div class="mobile-item">
+
+          <!-- 🔶 LeetCode 
+          @if (item.icon === 'leetcode') {
+            <a [href]="item.link" target="_blank" class="mobile-btn">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/leetcode/leetcode-original.svg"
+                alt="LeetCode"
+                class="lc-icon"
+              />
+            </a>
+          } -->
+
+          <!-- Leetcode -->
+          @if (item.label==='LeetCode') {
+            <a [href]="item.link" target="_blank" class="mobile-btn">
+              <i class="fas fa-code -{{item.icon}}"></i>
+            </a>
+          }
+          <!-- 📄 Resume -->
+          @else if (item.download) {
+            <a href="assets/Honey Habib.pdf" download="Honey_Habib.pdf" class="mobile-btn">
+              <i class="fa-solid fa-file-pdf"></i>
+            </a>
+          }
+
+          <!-- 🌐 Others -->
+          @else {
+            <a [href]="item.link" target="_blank" class="mobile-btn">
+              <i class="fa-brands fa-{{item.icon}}"></i>
+            </a>
+          }
+
+        </div>
+      }
+
+    </div>
+  </div>
+}
+
+<div class="email-container">
+  <a href="mailto:honey.habib@example.com" class="email-text">
+   honeyhabib.habib@gmail.com
+  </a>
+</div>

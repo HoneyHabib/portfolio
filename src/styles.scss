@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+html,body{
+    padding-top: 40px;
+    margin: 0;
+    // background:#FFFDF2;
+    background:#FDF4ED;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+}
+@font-face {
+  font-family: 'Hooey';
+//   src: url('/assets/fonts/CHERL___.TTF') format('truetype');
+src: url('/assets/fonts/Hooey.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

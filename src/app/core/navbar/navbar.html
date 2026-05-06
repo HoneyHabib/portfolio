@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="logo">
+    <h2>HH.</h2>
+  </div>
+
+  <div class="menu-icon" (click)="toggleMenu()">
+    ☰
+  </div>
+
+  <div class="nav-links" [class.active]="menuOpen">
+    <a href="#about" (click)="closeMenu()">About</a>
+    <a href="#experience" (click)="closeMenu()">Experience</a>
+    <a href="#projects" (click)="closeMenu()">Work</a>
+    <a href="#contact" (click)="closeMenu()">Contact</a>
+  </div>
+</nav>
