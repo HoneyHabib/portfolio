@@ -1,0 +1,148 @@
+/* Desktop */
+.desktop-social {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 50;
+}
+
+.social-item {
+  position: relative;
+  font-size: 20px;
+}
+
+.btn {
+  padding: 14px;
+  border-radius: 50%;
+//   background: #242424;
+  color: #1628A6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.06);
+  transition: 0.3s ease;
+  opacity: 0.7;
+  // transform: translateX(6px);
+  // color:#3f8553;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(22, 40, 166, 0.5);
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.social-item:hover .tooltip {
+  opacity: 0.7;
+  color: #1628A6;
+}
+
+/* Mobile */
+.mobile-social {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.25s ease;
+  z-index: 50;
+}
+
+.mobile-social.hide {
+  transform: translate(-50%, 80px);
+  opacity: 0;
+}
+
+.mobile-container {
+  display: flex;
+  gap: 12px;
+  background: #1628A6;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+.mobile-btn {
+  padding: 10px;
+  background: #1628A6;
+  border-radius: 50%;
+  color: #FFFDF2;
+}
+
+.mobile-btn:active {
+  transform: scale(0.9);
+  color: #1628A6;
+}
+
+/* Responsive */
+@media (min-width: 1024px) {
+  .mobile-social {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .desktop-social {
+    display: none;
+  }
+
+  .mobile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.email-container {
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email-text {
+  writing-mode: vertical-rl;   /* 👈 vertical text */
+  transform: rotate(180deg);   /* 👈 makes it readable top → bottom */
+  letter-spacing: 2px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color:#1628A6;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.email-text:hover {
+  opacity: 0.7;
+}
+
+/* vertical line below text */
+.email-container::after {
+  content: '';
+  width: 1px;
+  height: 80px;
+  background: #aaa;
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+  .email-container {
+    display: none;
+  }
+  
+}

@@ -1,0 +1,25 @@
+<section class="timeline" id="experience">
+  <div class="timeline-progress">
+          <div class="progress-line"></div>
+          <div class="progress-dot">
+          <i class="fa fa-female" aria-hidden="true"></i>
+          </div>
+  </div>
+  @for (item of experiences; let i = $index; track item) {
+    <div class="timeline-item"
+         [class.left]="i % 2 === 0"
+         [class.right]="i % 2 !== 0"
+         #timelineItem>
+      <div class="card">
+        <span class="year">{{ item.year }}</span>
+        <h3>{{ item.title }}</h3>
+        <ul>
+          @for (desc of item.desc; track desc) {
+            <li>{{ desc }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+
+</section>

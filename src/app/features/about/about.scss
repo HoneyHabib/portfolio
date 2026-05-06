@@ -1,0 +1,20 @@
+.container{
+  // max-width: 1200px;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.content{
+    text-align: justify;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    // line-height: 32px;
+    color: #1628A6;
+    max-width: 720px;        /* Medium uses ~680–740px for reading */
+    margin: 50px auto;          /* center content */
+    padding: 0 16px;         /* mobile default */
+  h2{
+    font-family: 'Hooey';
+    font-size: 38px;
+  }
+}

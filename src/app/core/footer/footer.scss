@@ -1,0 +1,41 @@
+.contact {
+ height: 100%;
+ padding: 2rem 1.5rem;
+ text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1628A6;
+  font-family: 'Hooey';
+}
+
+p {
+  margin: 2rem;
+  color: #1628A6;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.btn {
+    padding: 10px 10px;
+    width: 150px;
+    font-size: 18px;
+    background-color: #1628A6;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 18px;
+    transition: background-color 0.3s ease;
+    &:hover{
+      background-color: rgba(22, 40, 166, 0.5);
+      transform: scale(1.05);
+    }
+}
+
