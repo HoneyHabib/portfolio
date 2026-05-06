@@ -73,13 +73,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 60px;
+    gap: 20px;
     overflow: hidden;
 
     img {
       max-width: 180px;
       width: 100%;
-      margin-top: 30px;
+      // margin-top: 10px;
     }
   }
   .hero-content {
@@ -88,19 +88,19 @@
 
     p {
       font-size: 15px;
-      margin: 22px 0;
+      margin: 20px 0;
       letter-spacing: 1px;
     }
 
     h2 {
       font-size: 16px;
-      margin: 22px 0;
+      margin: 20px 0;
     }
 
     h1 {
       font-size: clamp(52px, 16vw, 72px);
       line-height: 0.9;
-      margin: 22px 0;
+      margin: 20px 0;
     }
   }
 
@@ -108,6 +108,6 @@
     width: 130px;
     font-size: 13px;
     padding: 10px 14px;
-    margin-top: 22px;
+    margin-top: 20px;
   }
 }
