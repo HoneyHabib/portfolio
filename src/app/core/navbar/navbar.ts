@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -15,5 +15,10 @@ export class Navbar {
 
   closeMenu() {
     this.menuOpen = false;
+  }
+
+  @HostListener('document:click')
+  onDocumentClick() {
+    this.closeMenu();
   }
 }

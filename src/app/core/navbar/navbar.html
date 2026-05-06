@@ -3,11 +3,11 @@
     <h2>HH.</h2>
   </div>
 
-  <div class="menu-icon" (click)="toggleMenu()">
+  <div class="menu-icon" (click)="toggleMenu(); $event.stopPropagation()">
     ☰
   </div>
 
-  <div class="nav-links" [class.active]="menuOpen">
+  <div class="nav-links" [class.active]="menuOpen" (click)="$event.stopPropagation()">
     <a href="#about" (click)="closeMenu()">About</a>
     <a href="#experience" (click)="closeMenu()">Experience</a>
     <a href="#projects" (click)="closeMenu()">Work</a>
